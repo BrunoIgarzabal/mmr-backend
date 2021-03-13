@@ -1,14 +1,18 @@
 package com.brunoIgarzabal.mmr.resources;
 
 import com.brunoIgarzabal.mmr.domain.Difficulty;
+import com.brunoIgarzabal.mmr.dto.DifficultyDTO;
 import com.brunoIgarzabal.mmr.services.DifficultyService;
 import com.brunoIgarzabal.mmr.services.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/difficulties")
@@ -47,5 +51,32 @@ public class DifficultyResource {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<DifficultyDTO>> findAll() {
+        List<Difficulty> list = service.findAll();
+
+        List<DifficultyDTO> listDto = list
+                .stream()
+                .map(obj -> new DifficultyDTO(obj))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(listDto);
+    }
+
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
+    public ResponseEntity<Page<DifficultyDTO>> findPage(
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
+            @RequestParam(value = "orderBy", defaultValue = "level") String orderBy,
+            @RequestParam(value = "direction", defaultValue = "ASC") String direction
+    ) {
+        Page<Difficulty> list = service.findPage(page, linesPerPage, orderBy, direction);
+
+        Page<DifficultyDTO> listDto = list
+                .map(obj -> new DifficultyDTO(obj));
+
+        return ResponseEntity.ok().body(listDto);
     }
 }

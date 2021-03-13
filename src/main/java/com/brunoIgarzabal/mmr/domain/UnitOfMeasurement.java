@@ -8,20 +8,32 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public final class Difficulty extends Base<Difficulty> implements Serializable {
+public class UnitOfMeasurement extends Base implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String name;
-    private String level;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    public Difficulty() {
+    private String name;
+    private String symbol;
+
+    public UnitOfMeasurement() {
 
     }
 
-    public Difficulty(Integer id, String name, String level) {
-        this.setId(id);
+    public UnitOfMeasurement(Integer id, String name, String symbol) {
+        this.id = id;
         this.name = name;
-        this.level = level;
+        this.symbol = symbol;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,19 +44,19 @@ public final class Difficulty extends Base<Difficulty> implements Serializable {
         this.name = name;
     }
 
-    public String getLevel() {
-        return level;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Difficulty that = (Difficulty) o;
+        UnitOfMeasurement that = (UnitOfMeasurement) o;
         return Objects.equals(id, that.id);
     }
 

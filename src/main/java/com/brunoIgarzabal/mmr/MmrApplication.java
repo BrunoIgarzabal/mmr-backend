@@ -2,6 +2,7 @@ package com.brunoIgarzabal.mmr;
 
 import com.brunoIgarzabal.mmr.domain.Difficulty;
 import com.brunoIgarzabal.mmr.repositories.DifficultyRepository;
+import com.brunoIgarzabal.mmr.repositories.GenericRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

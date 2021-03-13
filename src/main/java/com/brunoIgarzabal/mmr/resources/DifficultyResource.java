@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +29,8 @@ public class DifficultyResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Difficulty difficulty) {
+    public ResponseEntity<Void> insert(@Valid @RequestBody DifficultyDTO difficultyDto) {
+        Difficulty difficulty = new Difficulty(difficultyDto.getId(), difficultyDto.getName(), difficultyDto.getLevel());
         difficulty = service.insert(difficulty);
 
         URI uri = ServletUriComponentsBuilder
@@ -41,7 +43,8 @@ public class DifficultyResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Void> update(@RequestBody Difficulty difficulty, @PathVariable Integer id) {
+    public ResponseEntity<Void> update(@Valid @RequestBody DifficultyDTO difficultyDto, @PathVariable Integer id) {
+        Difficulty difficulty = new Difficulty(difficultyDto.getId(), difficultyDto.getName(), difficultyDto.getLevel());
         difficulty.setId(id);
         difficulty = service.update(difficulty, id);
         return ResponseEntity.noContent().build();

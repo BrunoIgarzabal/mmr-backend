@@ -3,7 +3,6 @@ package com.brunoIgarzabal.mmr.resources;
 import com.brunoIgarzabal.mmr.domain.Difficulty;
 import com.brunoIgarzabal.mmr.dto.DifficultyDTO;
 import com.brunoIgarzabal.mmr.services.DifficultyService;
-import com.brunoIgarzabal.mmr.services.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

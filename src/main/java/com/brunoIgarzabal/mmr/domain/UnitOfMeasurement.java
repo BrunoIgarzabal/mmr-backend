@@ -1,39 +1,26 @@
 package com.brunoIgarzabal.mmr.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class UnitOfMeasurement extends Base implements Serializable {
+public final class UnitOfMeasurement extends Base<UnitOfMeasurement> implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     private String name;
     private String symbol;
+    private String plural;
 
     public UnitOfMeasurement() {
 
     }
 
-    public UnitOfMeasurement(Integer id, String name, String symbol) {
-        this.id = id;
+    public UnitOfMeasurement(Integer id, String name, String symbol, String plural) {
+        this.setId(id);
         this.name = name;
         this.symbol = symbol;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        this.plural = plural;
     }
 
     public String getName() {
@@ -50,6 +37,14 @@ public class UnitOfMeasurement extends Base implements Serializable {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public String getPlural() {
+        return plural;
+    }
+
+    public void setPlural(String plural) {
+        this.plural = plural;
     }
 
     @Override

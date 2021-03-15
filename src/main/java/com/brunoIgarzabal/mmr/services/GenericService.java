@@ -17,7 +17,7 @@ import java.util.Optional;
 public class GenericService<T> {
 
     @Autowired
-    private GenericRepository<T> repository;
+    protected GenericRepository<T> repository;
 
     public T find(Integer id) {
         Optional<T> obj = repository.findById(id);
@@ -26,12 +26,14 @@ public class GenericService<T> {
         ));
     }
 
+
     public T insert(T entity) {
         return repository.save(entity);
     }
 
     public T update(T entity, Integer id) {
-        find(id);
+        T newObj = find(id);
+        updateData(newObj, entity);
         return repository.save(entity);
     }
 
@@ -52,5 +54,7 @@ public class GenericService<T> {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return repository.findAll(pageRequest);
     }
+
+    protected void updateData(T newObj, T oldObj) {}
 
 }

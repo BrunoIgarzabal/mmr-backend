@@ -1,8 +1,9 @@
 package com.brunoIgarzabal.mmr;
 
 import com.brunoIgarzabal.mmr.domain.Difficulty;
-import com.brunoIgarzabal.mmr.repositories.DifficultyRepository;
-import com.brunoIgarzabal.mmr.repositories.GenericRepository;
+import com.brunoIgarzabal.mmr.domain.UnitOfMeasurement;
+import com.brunoIgarzabal.mmr.repositories.difficulties.DifficultyRepository;
+import com.brunoIgarzabal.mmr.repositories.unitsOfMeasurements.UnitOfMeasurementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,8 @@ public class MmrApplication implements CommandLineRunner {
 
 	@Autowired
 	private DifficultyRepository difficultyRepository;
+	@Autowired
+	private UnitOfMeasurementRepository unitOfMeasurementRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MmrApplication.class, args);
@@ -27,5 +30,11 @@ public class MmrApplication implements CommandLineRunner {
 		Difficulty difHard = new Difficulty(null, "Difícil", "2");
 
 		difficultyRepository.saveAll(Arrays.asList(difEasy, difNormal, difHard));
+
+		UnitOfMeasurement unit1 = new UnitOfMeasurement(null, "Colher de sopa", "colher de sopa", "colheres de sopa");
+		UnitOfMeasurement unit2 = new UnitOfMeasurement(null, "Grama", "g", "g");
+		UnitOfMeasurement unit3 = new UnitOfMeasurement(null, "Litro", "l", "l");
+
+		unitOfMeasurementRepository.saveAll(Arrays.asList(unit1, unit2, unit3));
 	}
 }

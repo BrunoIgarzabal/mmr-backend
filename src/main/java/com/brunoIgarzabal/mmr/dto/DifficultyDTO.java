@@ -6,15 +6,15 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-public class DifficultyDTO implements Serializable {
+public final class DifficultyDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
 
-    @NotEmpty(message = "Name is Required")
+    @NotEmpty(message = "Nome é obrigatório")
     private String name;
 
-    @NotEmpty(message = "Level is Required")
+    @NotEmpty(message = "Nível de dificuldade é obrigatório")
     private String level;
 
     public DifficultyDTO() {
@@ -24,7 +24,7 @@ public class DifficultyDTO implements Serializable {
     public DifficultyDTO(Difficulty difficulty) {
         this.level = difficulty.getLevel();
         this.name = difficulty.getName();
-        setId(difficulty.getId());
+        this.setId(difficulty.getId());
     }
 
     public Integer getId() {

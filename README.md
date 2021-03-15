@@ -5,3 +5,4 @@ Backend em Java com Spring Boot da aplicação retaguarda do aplicativo Minha Me
 * Spring Boot
 * Hibernate
 * MySQL
+* Swagger

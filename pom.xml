@@ -12,7 +12,7 @@
 	<artifactId>mmr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mmr</name>
-	<description>Minha Melhor Receita project for Spring Boot</description>
+	<description>Minha Melhor Receita API</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -60,6 +60,24 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.1.5.Final</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.springdoc</groupId>-->
+<!--			<artifactId>springdoc-openapi-webflux-ui</artifactId>-->
+<!--			<version>1.5.2</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.springdoc</groupId>-->
+<!--			<artifactId>springdoc-openapi-data-rest</artifactId>-->
+<!--			<version>1.5.2</version>-->
+<!--		</dependency>-->
 
 <!--		<dependency>-->
 <!--			<groupId>io.springfox</groupId>-->

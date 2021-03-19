@@ -4,5 +4,5 @@ Backend em Java com Spring Boot da aplicação retaguarda do aplicativo Minha Me
 ## Tecnologias
 * Spring Boot
 * Hibernate
-* MySQL
+* H2 DB
 * Swagger
